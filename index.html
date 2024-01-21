@@ -1,57 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo</title>
-    <script src="encoder.js"></script>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        body {
-            text-align: center;
-            margin: 0;
-            padding: 0;
+        #outputText {
+            margin-top: 15px;
+            cursor: pointer; /* Set cursor to pointer when hovering over the textarea */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            width: calc(100% - 20px); /* Adjusted width to leave space for padding */
+            resize: vertical;
         }
 
-        #container {
-            display: inline-block;
-            text-align: left;
-        }
-
-        textarea {
-            margin-top: 10px;
-            resize: none; /* 设置文本框不可调整大小 */
-        }
-
-        button {
-            margin-top: 10px;
+        #outputText:active {
+            background-color: #f0f0f0; /* Change background color when the textarea is clicked */
         }
     </style>
 </head>
+
 <body>
-
     <div id="container">
-        <h1>和谐加密器</h1>
-
-        <label for="inputText">输入内容：</label>
+        <h1>1 tell U</h1>
         <br>
-        <textarea id="inputText" rows="15" cols="100"></textarea>
+        <textarea id="inputText" rows="15" placeholder="在这里输入哦..."></textarea>
 
-        <br>
-        <br>
-
-        <button onclick="encryptText()">&nbsp;&nbsp;🔒 加密&nbsp;&nbsp;&nbsp;</button>
-        <button onclick="decryptText()">&nbsp;&nbsp;🔓 解密&nbsp;&nbsp;&nbsp;</button>
+        <button onclick="encryptText()">🔒 悄悄话藏起来噜</button>
+        <button onclick="clearText()">🧹 都给我闭嘴好吧</button>
+        <button onclick="decryptText()">🔑 我想知道你说啥</button>
 
         <br>
         <br>
 
-        <label for="outputText">处理后的内容：</label>
+        <textarea id="outputText" rows="15" readonly placeholder="这里是处理过后的内容哦...(点击就可以复制啦)" onclick="copyToClipboard(this)"></textarea>
+
         <br>
-        <textarea id="outputText" rows="15" cols="100" readonly></textarea>
+
+        <h4>😘</h4>
     </div>
 
+    <script src="encoder.js"></script>
+
     <script>
-        // 加密函数
+        // 加密
         function encryptText() {
             const inputText = document.getElementById('inputText').value;
             const encryptedText = encode(inputText);
@@ -60,7 +54,7 @@
             document.getElementById('outputText').readOnly = true;
         }
 
-        // 解密函数
+        // 解密
         function decryptText() {
             const inputText = document.getElementById('inputText').value;
             const decryptedText = decode(inputText);
@@ -68,7 +62,24 @@
             document.getElementById('outputText').value = decryptedText;
             document.getElementById('outputText').readOnly = true;
         }
-    </script>
 
+        // 清空
+        function clearText() {
+            document.getElementById('inputText').value = '';
+            document.getElementById('outputText').value = '';
+        }
+
+        // 复制
+        function copyToClipboard(element) {
+            const outputText = element.value;
+
+            if (outputText.trim() !== '') {
+                element.select();
+                document.execCommand('copy');
+                alert('已经复制了哦');
+            }
+        }
+    </script>
 </body>
+
 </html>
