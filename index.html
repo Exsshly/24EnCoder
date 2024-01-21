@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo</title>
+    <script src="encoder.js"></script>
+    <style>
+        body {
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            display: inline-block;
+            text-align: left;
+        }
+
+        textarea {
+            margin-top: 10px;
+            resize: none; /* 设置文本框不可调整大小 */
+        }
+
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <h1>和谐加密器</h1>
+
+        <label for="inputText">输入内容：</label>
+        <br>
+        <textarea id="inputText" rows="15" cols="100"></textarea>
+
+        <br>
+        <br>
+
+        <button onclick="encryptText()">&nbsp;&nbsp;🔒 加密&nbsp;&nbsp;&nbsp;</button>
+        <button onclick="decryptText()">&nbsp;&nbsp;🔓 解密&nbsp;&nbsp;&nbsp;</button>
+
+        <br>
+        <br>
+
+        <label for="outputText">处理后的内容：</label>
+        <br>
+        <textarea id="outputText" rows="15" cols="100" readonly></textarea>
+    </div>
+
+    <script>
+        // 加密函数
+        function encryptText() {
+            const inputText = document.getElementById('inputText').value;
+            const encryptedText = encode(inputText);
+
+            document.getElementById('outputText').value = encryptedText;
+            document.getElementById('outputText').readOnly = true;
+        }
+
+        // 解密函数
+        function decryptText() {
+            const inputText = document.getElementById('inputText').value;
+            const decryptedText = decode(inputText);
+
+            document.getElementById('outputText').value = decryptedText;
+            document.getElementById('outputText').readOnly = true;
+        }
+    </script>
+
+</body>
+</html>
