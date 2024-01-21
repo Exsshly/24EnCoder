@@ -12,6 +12,12 @@ GithubPages线上Demo: [Demo](https://github.com/Samary1999/24EnCoder)
 
 主要代码来源于[wheatup/hexie-encode: 自定义字典的对称加密](https://github.com/wheatup/hexie-encode)
 
+吃了个饭回来更新了，想来我还是暂时需要用的，所以就做了一点点美化，最起码看起来没有原来那么简陋了
+
+然后就是字典我换成了下面两千多常用汉字的
+
+就是这样
+
 **下面内容来源于源仓库**
 
 # 和谐加解密
